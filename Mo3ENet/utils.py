@@ -9,7 +9,6 @@ import torch
 import torch_cluster
 from torch_scatter import scatter_softmax
 import torch.nn.functional as F
-import plotly.graph_objects as go
 
 
 def get_node_weights(mol_batch, decoded_mol_batch, decoding, num_decoder_nodes, node_weight_temperature):
@@ -390,6 +389,8 @@ def reload_model(model, device, optimizer, path, reload_optimizer=False):
 
 def swarm_vs_tgt_fig(data, decoded_data, max_point_types, graph_ind=0):
     cmax = 1
+    import plotly.graph_objects as go
+
     fig = go.Figure()  # scatter all the true & predicted points, colorweighted by atom type
     colors = ['rgb(229, 134, 6)', 'rgb(93, 105, 177)', 'rgb(82, 188, 163)', 'rgb(153, 201, 69)', 'rgb(204, 97, 176)',
               'rgb(36, 121, 108)', 'rgb(218, 165, 27)', 'rgb(47, 138, 196)', 'rgb(118, 78, 159)', 'rgb(237, 100, 90)',
